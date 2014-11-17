@@ -15,19 +15,61 @@ namespace TimeConversion
     {
         static void Main(string[] args)
         {
-            //Construct new Time object.
+            bool success = true; //flag used for exception handling.
             Time time = new Time();
 
-            //Get user input for hours, minutes, and seconds.
-            Console.Write("Enter hours: ");
-            time.Hours = double.Parse(Console.ReadLine()); //Probably need to use TryParse which returns a bool for exception handling purposes.
-
+            //Input hours.
+            Console.Write("Enter hours: "); 
+            do
+            {
+                try
+                {
+                    time.Hours = double.Parse(Console.ReadLine());
+                    success = true;
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid Input!");
+                    Console.Write("Enter hours: ");
+                    success = false;
+                }
+            } while (!success);
+            
+            //Input minutes.
             Console.Write("Enter minutes: ");
-            time.Minutes = double.Parse(Console.ReadLine()); //Need to add exception handling.
+            do
+            {
+                try
+                {
+                    time.Minutes = double.Parse(Console.ReadLine());
+                    success = true;
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid Input!");
+                    Console.Write("Enter minutes: ");
+                    success = false;
+                }
+            } while (!success);
 
+            //Input seconds.
             Console.Write("Enter seconds: ");
-            time.Seconds = double.Parse(Console.ReadLine()); //Need to add exception handling.
+            do
+            {
+                try
+                {
+                    time.Seconds = double.Parse(Console.ReadLine());
+                    success = true;
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid Input!");
+                    Console.Write("Enter seconds: ");
+                    success = false;
+                }
+            } while (!success);
 
+            //Output total seconds.
             Console.Write("Total seconds: ");
             Console.WriteLine(time.ToSeconds(time.Hours, time.Minutes, time.Seconds));
             

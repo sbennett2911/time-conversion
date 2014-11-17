@@ -17,6 +17,7 @@ namespace TimeConversion
         {
             bool success = true; //flag used for exception handling.
             Time time = new Time();
+            Run run = new Run();
 
             //Input hours.
             Console.Write("Enter hours: "); 
@@ -72,7 +73,27 @@ namespace TimeConversion
             //Output total seconds.
             Console.Write("Total seconds: ");
             Console.WriteLine(time.ToSeconds(time.Hours, time.Minutes, time.Seconds));
-            
+
+            //Input distance in miles to calculate pace.
+            Console.Write("Enter distance to run (miles): ");
+            do
+            {
+                try
+                {
+                    run.Distance = double.Parse(Console.ReadLine());
+                    success = true;
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid Input!");
+                    Console.Write("Enter distance to run (mile): ");
+                    success = false;
+                }
+            } while (!success);
+
+            //Calculate pace.
+            Console.Write("Pace: ");
+            Console.WriteLine(run.CalculatePace(run.Distance, time.ToSeconds(time.Hours, time.Minutes, time.Seconds)));
         }
     }
 }

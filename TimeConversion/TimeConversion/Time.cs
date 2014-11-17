@@ -13,6 +13,7 @@ namespace TimeConversion
         public double Minutes { get; set; }
         public double Seconds { get; set; }
 
+
         //methods
         public double ToSeconds(double h, double m, double s)
         {
